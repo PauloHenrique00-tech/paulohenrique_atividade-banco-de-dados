@@ -24,22 +24,22 @@ CREATE TABLE professores(
 INSERT INTO cursos(titulo, carga_horaria) 
 VALUES(
     'Front-End',
-    '40h'
+    40
 );
 
 INSERT INTO cursos(titulo, carga_horaria) 
 VALUES(
     'Back-End',
-    '80h'
+    80
 ), (
     'UX/UI Design',
-    '30h'
+    30
 ), (
     'Figma',
-    '10h'
+    10
 ), (
     'Redes de computadores',
-    '100h'
+    100
 );
 ```
 
@@ -95,14 +95,77 @@ UPDATE cursos SET professor_id = 5 WHERE titulo = 'Redes de computadores';
 ```sql
 INSERT INTO alunos (nome, data_de_nascimento, primeira_nota, segunda_nota, curso_id) 
 VALUES 
-    ('Jon', '09/04/2005', 10, 10, 1),
-    ('Tuco', '25/01/2001', 8, 7, 2),
-    ('Agostinho Carrara', '08/06/1997', 7,7, 3),
-    ('Lineuzinho', '25/11/1998', 10, 9, 4),
-    ('Mendonça', '14/05/1996', 8, 9, 5)
-    ('Floriano Carrara', '25/12/2005', 7, 5, 2),
-    ('Oliver', '04/08/2006', 6, 6, 1),
-    ('Dennis', '10/08/1999', 10, 8, 4),
-    ('Gabriel', '18/04/2007', 9,6, 5)
-    ('Beiçola', '25/01/1998', 7,5, 3);
+    ('Jon', '2005-09-04', 10, 10, 1),
+    ('Tuco', '2001-01-25', 8, 7, 3),
+    ('Agostinho Carrara', '1997-08-06', 7,7, 4),
+    ('Lineuzinho', '1998-11-23', 10, 9, 2),
+    ('Mendonça', '1996-05-14', 8, 9, 5),
+    ('Floriano Carrara', '2005-12-25', 7, 5, 2),
+    ('Oliver', '2006-04-08', 6, 6, 1),
+    ('Dennis', '1999-08-10', 10, 8, 4),
+    ('Gabriel', '2007-04-18', 9, 6, 5),
+    ('Beiçola', '1998-01-25', 7, 5, 3);
 ```
+
+```sql
+SELECT nome, DATE_FORMAT(data_de_nascimento, '%d%/%m%/%y%') AS data_nascimento_formatada FROM alunos;
+```
+
+```sql
+SELECT nome, data_de_nascimento FROM alunos;
+```
+
+```sql
+UPDATE alunos SET data_de_nascimento = '2001-01-25' WHERE nome = 'Tuco';
+```
+
+```sql
+UPDATE alunos SET data_de_nascimento = '1998-11-23' WHERE nome = 'Lineuzinho';
+```
+
+```sql
+UPDATE alunos SET data_de_nascimento = '1996-05-14' WHERE nome = 'Mendonça';
+```
+
+```sql
+UPDATE alunos SET data_de_nascimento = '2005-12-25' WHERE nome = 'Floriano Carrara';
+```
+
+```sql
+UPDATE alunos SET data_de_nascimento = '1998-01-25' WHERE nome = 'Beiçola';
+```
+
+```sql
+ALTER TABLE cursos
+    -- Adicionando uma restrição indicando o nome do relacionamento
+    ADD CONSTRAINT fk_cursos_professores
+
+    -- Criando a chave-estrangeira (fabricante_id) que
+    -- aponta para a chave-primária (id) de OUTRA TABELA (fabricantes)
+    FOREIGN KEY (professor_id) REFERENCES professores(id);
+```
+
+
+```sql
+ALTER TABLE professores
+    -- Adicionando uma restrição indicando o nome do relacionamento
+    ADD CONSTRAINT fk_professores_cursos
+
+    -- Criando a chave-estrangeira (fabricante_id) que
+    -- aponta para a chave-primária (id) de OUTRA TABELA (fabricantes)
+    FOREIGN KEY (curso_id) REFERENCES cursos(id);
+```
+
+
+```sql
+ALTER TABLE alunos
+    -- Adicionando uma restrição indicando o nome do relacionamento
+    ADD CONSTRAINT fk_alunos_cursos
+
+    -- Criando a chave-estrangeira (fabricante_id) que
+    -- aponta para a chave-primária (id) de OUTRA TABELA (fabricantes)
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id);
+```
+
+
+
