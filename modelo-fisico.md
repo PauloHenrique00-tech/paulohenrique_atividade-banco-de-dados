@@ -58,8 +58,8 @@ CREATE TABLE alunos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     data_de_nascimento DATE,
-    primeira_nota DECIMAL,
-    segunda_nota DECIMAL,
+    primeira_nota DECIMAL(4,2),
+    segunda_nota DECIMAL(4,2),
     curso_id INT NOT NULL
 );
 ```
@@ -165,4 +165,50 @@ ALTER TABLE alunos
     -- Criando a chave-estrangeira (fabricante_id) que
     -- aponta para a chave-primária (id) de OUTRA TABELA (fabricantes)
     FOREIGN KEY (aluno_id) REFERENCES alunos(id);
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 10, segunda_nota = 10 WHERE id = 1;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 8, segunda_nota = 7.5 WHERE id = 2;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 7.5, segunda_nota = 7 WHERE id = 3;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 10, segunda_nota = 9.5 WHERE id = 4;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 8.5, segunda_nota = 9.5 WHERE id = 5;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 7, segunda_nota = 5.5 WHERE id = 6;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 6.5, segunda_nota = 6.5 WHERE id = 7;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 10, segunda_nota = 8.5 WHERE id = 8;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 9.5, segunda_nota = 6.5 WHERE id = 9;
+```
+
+```sql
+UPDATE alunos SET primeira_nota = 7.5, segunda_nota = 5.5 WHERE id = 10;
+```
+
+```sql
+ALTER TABLE alunos
+MODIFY COLUMN primeira_nota DECIMAL(4,2),
+MODIFY COLUMN segunda_nota DECIMAL(4,2);
 ```
