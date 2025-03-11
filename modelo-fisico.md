@@ -166,6 +166,3 @@ ALTER TABLE alunos
     -- aponta para a chave-primária (id) de OUTRA TABELA (fabricantes)
     FOREIGN KEY (aluno_id) REFERENCES alunos(id);
 ```
-
-
-
