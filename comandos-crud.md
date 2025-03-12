@@ -47,5 +47,20 @@ SELECT
     cursos.titulo AS curso
 FROM cursos
 INNER JOIN professores ON cursos.professor_id = professores.id
-ORDER BY professores ASC;
+ORDER BY professor_id ASC;
+```
+
+```sql (8)
+SELECT
+    alunos.nome AS aluno,
+    cursos.titulo AS curso,
+    professores.nome AS professor
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+INNER JOIN professores ON cursos.professor_id = professores.id;    
+```
+
+```sql (9)
+SELECT
+    
 ```
