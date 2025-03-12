@@ -70,6 +70,15 @@ GROUP BY cursos.id
 ORDER BY quantidade_de_alunos DESC;
 ```
 
-SELECT area_de_atuacao, COUNT(*) AS quantidade_de_professores
-FROM professores
-GROUP BY area_de_atuacao;
+```sql (10)
+SELECT 
+    alunos.nome,
+    alunos.primeira_nota,
+    alunos.segunda_nota,
+    ROUND((alunos.primeira_nota + segunda_nota) / 2, 2) AS media,
+    cursos.titulo
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+WHERE curso_id IN (1, 2)
+ORDER BY alunos.nome;
+```
