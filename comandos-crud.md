@@ -62,5 +62,14 @@ INNER JOIN professores ON cursos.professor_id = professores.id;
 
 ```sql (9)
 SELECT
-    
+    cursos.titulo AS curso,
+    COUNT(alunos.id) AS quantidade_de_alunos 
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.id
+ORDER BY quantidade_de_alunos DESC;
 ```
+
+SELECT area_de_atuacao, COUNT(*) AS quantidade_de_professores
+FROM professores
+GROUP BY area_de_atuacao;
