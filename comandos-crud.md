@@ -37,3 +37,12 @@ SELECT area_de_atuacao, COUNT(*) AS quantidade_de_professores
 FROM professores
 GROUP BY area_de_atuacao;
 ```
+
+```sql
+SELECT 
+    alunos.nome AS aluno, 
+    cursos.titulo AS curso, 
+    cursos.carga_horaria 
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id;
+```
