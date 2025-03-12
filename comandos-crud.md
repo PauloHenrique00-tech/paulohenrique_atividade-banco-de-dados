@@ -1,9 +1,9 @@
-```sql
+```sql (1)
 SELECT * FROM alunos
 WHERE data_de_nascimento < '2009-01-01';
 ```
 
-```sql
+```sql  (2)
 SELECT
     nome,
     primeira_nota,
@@ -12,7 +12,7 @@ SELECT
 FROM alunos;
 ```
 
-```sql
+```sql (3)
 SELECT
     titulo,
     carga_horaria,
@@ -21,28 +21,31 @@ FROM cursos
 ORDER BY titulo ASC;
 ```
 
-```sql
+```sql (4)
 SELECT * FROM professores
 WHERE area_de_atuacao = 'desenvolvimento';
 ```
 
-```sql
+```sql (5)
 SELECT area_de_atuacao, COUNT(*) AS quantidade_de_professores
 FROM professores
 GROUP BY area_de_atuacao;
 ```
 
-```sql
-SELECT area_de_atuacao, COUNT(*) AS quantidade_de_professores
-FROM professores
-GROUP BY area_de_atuacao;
-```
-
-```sql
+```sql (6)
 SELECT 
-    alunos.nome AS aluno, 
-    cursos.titulo AS curso, 
-    cursos.carga_horaria 
+    alunos.nome AS aluno,
+    cursos.titulo AS curso,
+    cursos.carga_horaria
 FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id;
+```
+
+```sql (7)
+SELECT
+    professores.nome AS professor,
+    cursos.titulo AS curso
+FROM cursos
+INNER JOIN professores ON cursos.professor_id = professores.id
+ORDER BY professores ASC;
 ```
