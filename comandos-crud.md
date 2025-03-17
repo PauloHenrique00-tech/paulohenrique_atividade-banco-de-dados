@@ -82,3 +82,26 @@ INNER JOIN cursos ON alunos.curso_id = cursos.id
 WHERE curso_id IN (1, 2)
 ORDER BY alunos.nome;
 ```
+
+```sql (11)
+    UPDATE cursos
+    SET titulo = 'Adobe XD', carga_horaria = 15 
+    WHERE titulo = 'Figma';
+```
+
+```sql (12)
+    DELETE FROM alunos 
+    WHERE curso_id IN (
+        SELECT id FROM cursos WHERE titulo IN ('Redes de Computadores', 'UX;UI Design')
+    )
+    LIMIT 2;
+```
+
+```sql (13)
+    SELECT 
+    alunos.nome AS nome, 
+    cursos.titulo AS curso
+    FROM alunos
+    INNER JOIN cursos ON alunos.curso_id = cursos.id
+    ORDER BY alunos.nome;
+```
