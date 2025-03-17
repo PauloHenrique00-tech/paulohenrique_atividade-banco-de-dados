@@ -105,3 +105,37 @@ ORDER BY alunos.nome;
     INNER JOIN cursos ON alunos.curso_id = cursos.id
     ORDER BY alunos.nome;
 ```
+
+```sql (Desafio 1)
+SELECT
+    nome AS nome,
+    data_de_nascimento,
+    TIMESTAMPDIFF(YEAR, data_de_nascimento, CURDATE()) AS Idade
+FROM alunos;
+```
+
+```sql (Desafio 2)
+SELECT
+    primeira_nota,
+    segunda_nota,
+    ROUND((primeira_nota + segunda_nota) / 2, 2) AS media
+FROM alunos
+HAVING media >= 7;
+```
+
+```sql (Desafio 3)
+SELECT
+    primeira_nota,
+    segunda_nota,
+    ROUND((primeira_nota + segunda_nota) / 2, 2) AS media
+FROM alunos
+HAVING media <= 7;
+```
+
+```sql (Desafio 4)
+SELECT
+    nome,
+    ROUND((primeira_nota + segunda_nota) / 2, 2) AS media
+FROM alunos
+HAVING media >= 7;
+```
