@@ -82,3 +82,7 @@ INNER JOIN cursos ON alunos.curso_id = cursos.id
 WHERE curso_id IN (1, 2)
 ORDER BY alunos.nome;
 ```
+
+```sql (11)
+
+```
