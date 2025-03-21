@@ -84,9 +84,10 @@ ORDER BY alunos.nome;
 ```
 
 ```sql (11)
-    UPDATE cursos
-    SET titulo = 'Adobe XD', carga_horaria = 15 
-    WHERE titulo = 'Figma';
+    UPDATE cursos WHERE titulo,carga_horaria 'Figma', 10
+    SET titulo 'Adobe XD', carga_horaria = 15;
+    --SET titulo = 'Adobe XD', carga_horaria = 15 
+   -- WHERE titulo = 'Figma';
 ```
 
 ```sql (12)
