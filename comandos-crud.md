@@ -84,16 +84,15 @@ ORDER BY alunos.nome;
 ```
 
 ```sql (11)
-    UPDATE cursos WHERE titulo,carga_horaria 'Figma', 10
-    SET titulo 'Adobe XD', carga_horaria = 15;
-    --SET titulo = 'Adobe XD', carga_horaria = 15 
-   -- WHERE titulo = 'Figma';
+    UPDATE cursos 
+    SET titulo = 'Adobe XD', carga_horaria = 15
+    WHERE id = 5;
 ```
 
 ```sql (12)
     DELETE FROM alunos 
     WHERE curso_id IN (
-        SELECT id FROM cursos WHERE titulo IN ('Redes de Computadores', 'UX;UI Design')
+        SELECT id FROM cursos WHERE titulo IN ('Redes de Computadores', 'UX/UI Design')
     )
     LIMIT 2;
 ```
